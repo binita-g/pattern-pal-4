@@ -146,24 +146,26 @@
 				</div>
 				<div id="solution-container">
 					<div id="error-container"></div>
-					<label for="solution-names" id="solution-label">Select a solution:</label> 
-					<select name="solution-names" id="solution-dropdown" onchange="dropdownChange()"> 
+					<!-- <label for="solution-names" id="solution-label">Select a solution:</label>  -->
+					<!-- <select name="solution-names" id="solution-dropdown" onchange="dropdownChange()"> 
 						<option value="solution-1">Solution 1</option> 
 						<option value="solution-2">Solution 2</option> 
 						<option value="solution-3">Solution 3</option> 
 						<option value="solution-4">Solution 4</option> 
-					</select>
-					<p id="solution-1" class="default solution">Solution 1</p>
+					</select> -->
+					<!-- <p id="solution-1" class="default solution">Solution 1</p>
 					<p id="solution-2" class="solution">Solution 2</p>
 					<p id="solution-3" class="solution">Solution 3</p>
-					<p id="solution-4" class="solution">Solution 4</p>
+					<p id="solution-4" class="solution">Solution 4</p> -->
 					<div id="solutions"></div>
 				</div>
 			</div>
 			<div id="right" class="box">
 				<div id="tests-container">
 					<div id="best"></div>
+					<br>
 					<div id="passed"></div>
+					<br>
 					<div id="failed"></div>
 				</div>
 			</div>
@@ -191,90 +193,90 @@
 
     // TODO: testing only REMOVE BEFORE PUBLISHING
     // mock the solutions
-    patternpal.solutions = [
-      `^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$`,
-      `^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$`,
-      `^(?:[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*)@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)+$`,
-      `^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,}$`,
-      `^[\w\d._%+-]+@(?:[\w\d-]+\.)+\w{2,}$`,
-    ].map(regString => new RegExp(regString));
+    // patternpal.solutions = [
+    //   `^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$`,
+    //   `^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$`,
+    //   `^(?:[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*)@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)+$`,
+    //   `^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,}$`,
+    //   `^[\w\d._%+-]+@(?:[\w\d-]+\.)+\w{2,}$`,
+    // ].map(regString => new RegExp(regString));
 
     // mock the tests
-    patternpal.tests = [
-      (regex) => {
-      // Explanation: A valid email address must have a "@" symbol
-      return regex.test("test@example.com");
-      },
-      (regex) => {
-      // Explanation: A valid email address must have a "." symbol
-      return regex.test("john.doe123@gmail.com");
-      },
-      (regex) => {
-      // Explanation: A valid email address must end with a valid domain name
-      return regex.test("jane@company.co.uk");
-      },
-      (regex) => {
-      // Explanation: A valid email address must not have spaces
-      return regex.test("user123@example-domain.net");
-      },
-      (regex) => {
-      // Explanation: A valid email address must not have spaces
-      return !regex.test("first. last@subdomain. example.com");
-      },
-      (regex) => {
-      // Explanation: An empty string is not a valid email address
-      return !regex.test("");
-      },
-      (regex) => {
-      // Explanation: An email address must contain the "a" symbol
-      return !regex.test("test.example.com");
-      },
-      (regex) => {
-      // Explanation: The domain part of an email address must be a valid domain name
-      return !regex.test("test@example.123");
-      },
-      (regex) => {
-      // Explanation: An email address should have exactly one "@" symbol
-      return !regex.test ("test@example@example.com");
-      },
-      (regex) => {
-      // Explanation: The local part of an email address should not contain special characters like "$"
-      return !regex.test ("te$st@example.com");
-      },
-    ];
+    // patternpal.tests = [
+    //   (regex) => {
+    //   // Explanation: A valid email address must have a "@" symbol
+    //   return regex.test("test@example.com");
+    //   },
+    //   (regex) => {
+    //   // Explanation: A valid email address must have a "." symbol
+    //   return regex.test("john.doe123@gmail.com");
+    //   },
+    //   (regex) => {
+    //   // Explanation: A valid email address must end with a valid domain name
+    //   return regex.test("jane@company.co.uk");
+    //   },
+    //   (regex) => {
+    //   // Explanation: A valid email address must not have spaces
+    //   return regex.test("user123@example-domain.net");
+    //   },
+    //   (regex) => {
+    //   // Explanation: A valid email address must not have spaces
+    //   return !regex.test("first. last@subdomain. example.com");
+    //   },
+    //   (regex) => {
+    //   // Explanation: An empty string is not a valid email address
+    //   return !regex.test("");
+    //   },
+    //   (regex) => {
+    //   // Explanation: An email address must contain the "a" symbol
+    //   return !regex.test("test.example.com");
+    //   },
+    //   (regex) => {
+    //   // Explanation: The domain part of an email address must be a valid domain name
+    //   return !regex.test("test@example.123");
+    //   },
+    //   (regex) => {
+    //   // Explanation: An email address should have exactly one "@" symbol
+    //   return !regex.test ("test@example@example.com");
+    //   },
+    //   (regex) => {
+    //   // Explanation: The local part of an email address should not contain special characters like "$"
+    //   return !regex.test ("te$st@example.com");
+    //   },
+    // ];
 
-    patternpal.getTestsPassedByBestSolution = () => {
-      return [
-        patternpal.tests[3].toString(),
-        patternpal.tests[4].toString(),
-        patternpal.tests[5].toString(),
-        patternpal.tests[6].toString(),
-        patternpal.tests[7].toString(),
-        patternpal.tests[8].toString(),
-        patternpal.tests[9].toString(),
-      ]
-    };
+    // patternpal.getTestsPassedByBestSolution = () => {
+    //   return [
+    //     patternpal.tests[3].toString(),
+    //     patternpal.tests[4].toString(),
+    //     patternpal.tests[5].toString(),
+    //     patternpal.tests[6].toString(),
+    //     patternpal.tests[7].toString(),
+    //     patternpal.tests[8].toString(),
+    //     patternpal.tests[9].toString(),
+    //   ]
+    // };
 
-    patternpal.getTestsFailedByBestSolution = () => {
-      return [
-        patternpal.tests[0].toString(),
-        patternpal.tests[1].toString(),
-        patternpal.tests[2].toString(),
-      ]
-    };
+    // patternpal.getTestsFailedByBestSolution = () => {
+    //   return [
+    //     patternpal.tests[0].toString(),
+    //     patternpal.tests[1].toString(),
+    //     patternpal.tests[2].toString(),
+    //   ]
+    // };
 
-    patternpal.best_solution = 0;
+    // patternpal.best_solution = 0;
 
-    patternpal.best_tests = [0, 2];
+    // patternpal.best_tests = [0, 2];
 
-    patternpal.query =
-      async () => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve();
-          }, 1000);
-        });
-      };
+    // patternpal.query =
+    //   async () => {
+    //     return new Promise((resolve, reject) => {
+    //       setTimeout(() => {
+    //         resolve();
+    //       }, 1000);
+    //     });
+    //   };
 
     // TODO: ^^^^
 
@@ -302,8 +304,8 @@
       const best_solution = patternpal.getBestSolution();
 
       console.log("solutions", solutions);
-
-	  document.getElementById('solutions').innerText = solutions
+		
+	  document.getElementById('solutions').innerHTML = solutions.join("<br>");
 	
     // Set the value of search to the best solution
     document.getElementById('search').getElementsByTagName('textarea')[0].value = best_solution;
@@ -318,9 +320,9 @@
 	  console.log("failed", failed);
 
       // TODO: populate
-	  document.getElementById('best').textContent = best
-	  document.getElementById('passed').textContent = passed
-	  document.getElementById('failed').textContent = failed
+	  document.getElementById('best').innerHTML = best.join("<br>");
+	  document.getElementById('passed').innerHTML = passed.join("<br>");
+	  document.getElementById('failed').innerHTML = failed.join("<br>");
 
     }
 	
