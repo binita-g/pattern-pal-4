@@ -531,9 +531,6 @@ function SmartField (el) {
 	if (isIE) el.style.overflowX = "hidden";
 	// Turn off spellcheck for Firefox
 	if (textboxEl.spellcheck) textboxEl.spellcheck = false;
-	/* Safari 3 beta starts textarea contents three pixels from the left, and this cannot be removed
-	by setting CSS padding or margin attributes to zero. */
-	if (isWebKit) textboxEl.style.marginLeft = "-3px";
 
 	this.field = el;
 	this.textbox = textboxEl;
