@@ -47,7 +47,7 @@ pre {
 
 .box { border: 3px solid lightgray; border-radius: 10px; margin: 1em; padding: 1em }
 #container	 {display: flex; height: 800px}
-#container #left	{width: 50%; background-color: #93CDFF }
+#container #left	{width: 50%; background-color: #add8e6 }
 #container #right	{width: 50%; background-color: #FFC378}
 #header      {height: 50px;}
 #header img  {float:left; position:absolute; top:5px; left:5px; z-index:60; margin: 20px}
@@ -104,7 +104,7 @@ pre {
 #quickReference img.pin     {right:25px;}
 #quickReference img.close   {right:8px; background-image:url("./pinned.gif"); /* Preload toggle image for img.pin */}
 #quickReference code        {font-size:110%;}
-#query-butt					{margin: 10px 0px 0px 5px; font-family: 'Courier New', monospace; border-radius: 4px; border: 2px solid white; background-color: lightblue; padding: 10px 20px 10px 20px}
+#query-butt					{margin: 10px 0px 0px 5px; font-family: 'Courier New', monospace; border-radius: 4px; border: 2px solid white; background-color: #d5dadb; padding: 10px 20px 10px 20px}
 #solution-container			{font-family: 'Courier New', monospace; margin: 20px 0px 10px 5px}
 table tr.altBg              {background:#f2eab7;}
 
