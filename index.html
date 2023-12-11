@@ -146,18 +146,11 @@
 				</div>
 				<div id="solution-container">
 					<div id="error-container"></div>
-					<label for="solution-names" id="solution-label">Select a solution:</label> 
-					<select name="solution-names" id="solution-dropdown" onchange="dropdownChange()"> 
-						<option value="solution-1">Solution 1</option> 
-						<option value="solution-2">Solution 2</option> 
-						<option value="solution-3">Solution 3</option> 
-						<option value="solution-4">Solution 4</option> 
+					<label for="solution-names" id="solution-label" style="display: none;">Select a solution:</label> 
+					<select name="solution-names" id="solution-dropdown" style="display: none;" onchange="dropdownChange()"> 
 					</select>
-					<p id="solution-1" class="default solution">Solution 1</p>
-					<p id="solution-2" class="solution">Solution 2</p>
-					<p id="solution-3" class="solution">Solution 3</p>
-					<p id="solution-4" class="solution">Solution 4</p>
-					<div id="solutions"></div>
+					<h3 id="solutions-title" style="display: none; margin: 20px;">All Solutions:</h3>
+					<div id="solutions" style="display: none;"></div>
 				</div>
 			</div>
 			<div id="right" class="box">
@@ -301,6 +294,30 @@
     }
     watchInput();
 
+	// Populate select dropdown
+	function populateDropdown() {
+		const solns = patternpal.getAllSolutions();
+
+		var select = document.createElement("select");
+		select.name = "solution-dropdown-2";
+		select.id = "solution-dropdown-2"
+
+		for (const soln of solns) {
+			console.log("HERE IS EACH SOLN", soln)
+			var option = document.createElement("option");
+			option.value = soln;
+			option.text = soln;
+			select.appendChild(option);
+		}
+
+		var label = document.createElement("label");
+		label.innerHTML = "Choose your solutions: "
+		label.htmlFor = "solution-dropdown-2";
+ 
+    document.getElementById("solution-container").appendChild(label).appendChild(select);
+	}
+
+	// Populate solutions below
 	function populateSolutions() {
       const solutions = patternpal.getAllSolutions();
       console.log(solutions);
@@ -308,12 +325,15 @@
 
       console.log("solutions", solutions);
 
+	  document.getElementById('solutions-title').style.display="block";
+	  document.getElementById('solutions').style.display="block";
 	  document.getElementById('solutions').innerText = solutions
 	
     // Set the value of search to the best solution
     document.getElementById('search').getElementsByTagName('textarea')[0].value = best_solution;
     }
 
+	// Show all tests
     function populateTests() {
       const best = patternpal.getBestTests();
       console.log("best", best);
@@ -322,7 +342,6 @@
       const failed = patternpal.getTestsFailedByBestSolution();
 	  console.log("failed", failed);
 
-      // TODO: populate
 	  document.getElementById('best').textContent = best
 	  document.getElementById('passed').textContent = passed
 	  document.getElementById('failed').textContent = failed
@@ -347,6 +366,7 @@
           removeError();
           // Populate solution and tests into UI
           populateSolutions();
+		  populateDropdown();
           populateTests();
         })
         .catch((err) => {

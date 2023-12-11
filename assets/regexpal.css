@@ -120,6 +120,7 @@ table tr.altBg              {background:#f2eab7;}
 .smartField textarea, #test-label        {font:100% "courier new",monospace; width:100%; margin: 20px}
 .smartField pre             {z-index:1; color:#f9f9f9;}
 .smartField textarea        {z-index:2; border:0; background:transparent; position:absolute; top:0; overflow:hidden;}
+#solutions					{margin: 20px; background-color: lightgreen; padding: 20px; border: 2px solid lightgray; border-radius: 20px;}
 #test-names 				{ width: 30%; }
 #tests-container			{font-family: 'Courier New', monospace;}
 .solution { display: none; }
