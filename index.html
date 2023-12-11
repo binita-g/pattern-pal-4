@@ -254,10 +254,25 @@
 		const failed = patternpal.getTestsFailedBySolution(ind);
 		document.getElementById('failed').textContent = failed
 	}
+
+  function setButtonLoading() {
+    let button = document.getElementById('query-butt');
+    button.innerText = 'Loading...';
+    button.disabled = true;
+    button.style.cursor = 'wait';
+  }
+
+  function setButtonNotLoading() {
+    let button = document.getElementById('query-butt');
+    button.innerText = 'Submit';
+    button.disabled = false;
+    button.style.cursor = 'pointer';
+  }
 	
     // On query, use PatternPal to query for solutions and tests
     function onQuery() {
-      // TODO: set the button to loading
+      // set the button to loading
+      setButtonLoading();
       // make sure that the query is not empty
       if (!query.value) {
         // TODO: Show error
@@ -277,7 +292,8 @@
           showError(err);
         })
         .finally(() => {
-          // TODO: set the button to not loading
+          // set the button to not loading
+          setButtonNotLoading();
         });
     }
 
