@@ -294,7 +294,7 @@
 		}
 
 		var label = document.createElement("label");
-		label.innerHTML = "Choose your solutions: "
+		label.innerHTML = "Choose a solution to see which tests it passes and fails: "
 		label.htmlFor = "solution-dropdown-2";
  
     document.getElementById("solution-container").appendChild(label)
@@ -336,8 +336,12 @@
     }
 
 	function dropdownChange(event) {
-		const currentValue = event.target.value;
-  		console.log(currentValue);
+		const ind = event.target.selectedIndex;;
+		const passed = patternpal.getTestsPassedBySolution(ind);
+		document.getElementById('passed').textContent = passed
+
+		const failed = patternpal.getTestsFailedBySolution(ind);
+		document.getElementById('failed').textContent = failed
 	}
 	
     // On query, use PatternPal to query for solutions and tests
@@ -355,8 +359,8 @@
           removeError();
           // Populate solution and tests into UI
           populateSolutions();
-		  populateDropdown();
           populateTests();
+		  populateDropdown();
         })
         .catch((err) => {
           showError(err);
