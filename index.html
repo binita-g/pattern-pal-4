@@ -14,23 +14,6 @@
 	<title>Regex Tester &ndash; RegexPal</title>
 	<link href="./assets/regexpal.css" rel="stylesheet" type="text/css"/>
 </head>
-<script>
-	function dropdownChange() {
-	// Dropdown to show tests
-	const dd = document.getElementById('solution-dropdown');
-
-	dd.addEventListener('change', function handleChange(event) {
-		const solns = document.querySelectorAll(".solution");
-
-		solns.forEach((soln) => {
-			soln.style.display = 'none';
-		});
-
-		const selected = document.getElementById(event.target.value);
-		selected.style.display = 'block';
-	});
-}
-</script>
 <body>
 	<div id="header">
 		<img src="./assets/patternpal.png" alt=PatternPal"/ class="logo">
@@ -147,7 +130,7 @@
 				<div id="solution-container">
 					<div id="error-container"></div>
 					<label for="solution-names" id="solution-label" style="display: none;">Select a solution:</label> 
-					<select name="solution-names" id="solution-dropdown" style="display: none;" onchange="dropdownChange()"> 
+					<select name="solution-names" id="solution-dropdown" style="display: none;"> 
 					</select>
 					<h3 id="solutions-title" style="display: none; margin: 20px;">All Solutions:</h3>
 					<div id="solutions" style="display: none;"></div>
@@ -300,10 +283,10 @@
 
 		var select = document.createElement("select");
 		select.name = "solution-dropdown-2";
-		select.id = "solution-dropdown-2"
+		select.id = "solution-dropdown-2";
+		select.addEventListener("change", dropdownChange);
 
 		for (const soln of solns) {
-			console.log("HERE IS EACH SOLN", soln)
 			var option = document.createElement("option");
 			option.value = soln;
 			option.text = soln;
@@ -314,7 +297,8 @@
 		label.innerHTML = "Choose your solutions: "
 		label.htmlFor = "solution-dropdown-2";
  
-    document.getElementById("solution-container").appendChild(label).appendChild(select);
+    document.getElementById("solution-container").appendChild(label)
+	document.getElementById("solution-container").appendChild(select);
 	}
 
 	// Populate solutions below
@@ -350,6 +334,11 @@
 	  document.getElementById('passed-title').style.display="block";
 	  document.getElementById('failed-title').style.display="block";
     }
+
+	function dropdownChange(event) {
+		const currentValue = event.target.value;
+  		console.log(currentValue);
+	}
 	
     // On query, use PatternPal to query for solutions and tests
     function onQuery() {
