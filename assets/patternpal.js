@@ -33,6 +33,8 @@ class PatternPal {
   best_tests;
   // String[] tests.
   tests;
+  // Results
+  results;
 
   /**
    * Private methods
@@ -266,6 +268,24 @@ class PatternPal {
 
   getTests() {
     return this.tests;
+  }
+
+  getResults() {
+    return this.results;
+  }
+
+   // Returns a list of tests that a particular solution passes in string form.
+   getTestsPassedBySolution(j) {
+    // Tests that the best solution passes are the ones that are true in the best solution's row.
+    this.testSolutions();
+    return this.results[j].map((result, i) => result ? this.tests[i].toString() : null).filter(test => test);
+  }
+
+  // Returns a list of tests that a particular solution passes in string form.
+  getTestsFailedBySolution(j) {
+    // Tests that the best solution passes are the ones that are true in the best solution's row.
+    this.testSolutions();
+    return this.results[j].map((result, i) => !result ? this.tests[i].toString() : null).filter(test => test);
   }
 
   // Returns a list of tests that the best solution passes in string form.

@@ -104,7 +104,11 @@ pre {
 #quickReference img.pin     {right:25px;}
 #quickReference img.close   {right:8px; background-image:url("./pinned.gif"); /* Preload toggle image for img.pin */}
 #quickReference code        {font-size:110%;}
-#query-butt					{margin: 10px 0px 0px 5px; font-family: 'Courier New', monospace; border-radius: 4px; border: 2px solid white; background-color: #d5dadb; padding: 10px 20px 10px 20px}
+#query-butt					{margin: 10px 0px 0px 5px; font-family: 'Courier New', monospace; border-radius: 4px; border: 2px solid white; background-color: #d5dadb; padding: 10px 20px 10px 20px; cursor: pointer;}
+#query-butt:hover {
+	background-color: #d4e4f2;
+	color: #2d2d2d;
+  }
 #solution-container			{font-family: 'Courier New', monospace; margin: 20px 0px 10px 5px}
 table tr.altBg              {background:#f2eab7;}
 
