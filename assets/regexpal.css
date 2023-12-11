@@ -121,7 +121,7 @@ table tr.altBg              {background:#f2eab7;}
 #input                      {height:35% !important; width:99.75%; margin-top:10px; border-radius: 20px}
 .smartField                 {position:relative; overflow:auto; border:1px solid #ccc; background:#f9f9f9;}
 .smartField pre,
-.smartField textarea, #test-label        {font:100% "courier new",monospace; width:100%; margin: 20px}
+.smartField textarea, #test-label        {font:100% "courier new",monospace; width:calc(100% - 2*20px); margin: 20px}
 .smartField pre             {z-index:1; color:#f9f9f9;}
 .smartField textarea        {z-index:2; border:0; background:transparent; position:absolute; top:0; overflow:hidden;}
 #solutions					{margin: 20px; background-color: lightgreen; padding: 20px; border: 2px solid lightgray; border-radius: 20px;}
