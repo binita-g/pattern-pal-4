@@ -162,8 +162,13 @@
 			</div>
 			<div id="right" class="box">
 				<div id="tests-container">
+					<h3 id="best-title" style="display: none;">Best Tests:</h3>
 					<div id="best"></div>
+
+					<h3 id="passed-title" style="display: none;">All Passed Tests:</h3>
 					<div id="passed"></div>
+
+					<h3 id="failed-title" style="display: none;">Failed Tests:</h3>
 					<div id="failed"></div>
 				</div>
 			</div>
@@ -322,6 +327,9 @@
 	  document.getElementById('passed').textContent = passed
 	  document.getElementById('failed').textContent = failed
 
+	  document.getElementById('best-title').style.display="block";
+	  document.getElementById('passed-title').style.display="block";
+	  document.getElementById('failed-title').style.display="block";
     }
 	
     // On query, use PatternPal to query for solutions and tests

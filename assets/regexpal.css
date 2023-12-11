@@ -108,9 +108,9 @@ pre {
 #solution-container			{font-family: 'Courier New', monospace; margin: 20px 0px 10px 5px}
 table tr.altBg              {background:#f2eab7;}
 
-#best						{background-color: oldlace}
-#passed						{background-color: lightgreen}
-#failed						{background-color: lightcoral}
+#best						{background-color: oldlace; margin: 20px}
+#passed						{background-color: lightgreen; margin: 20px}
+#failed						{background-color: lightcoral; margin: 20px}
 #key                        {height:10%; width:99.75%; border-radius: 20px}
 #query                      {height:20%; width:99.75%; margin-top:10px; border-radius: 20px}
 #search                     {height:20%; width:99.75%; margin-top:10px; border-radius: 20px}
@@ -120,7 +120,8 @@ table tr.altBg              {background:#f2eab7;}
 .smartField textarea, #test-label        {font:100% "courier new",monospace; width:100%; margin: 20px}
 .smartField pre             {z-index:1; color:#f9f9f9;}
 .smartField textarea        {z-index:2; border:0; background:transparent; position:absolute; top:0; overflow:hidden;}
-#test-names { width: 30%; }
+#test-names 				{ width: 30%; }
+#tests-container			{font-family: 'Courier New', monospace;}
 .solution { display: none; }
 .default { display: block; }
 
